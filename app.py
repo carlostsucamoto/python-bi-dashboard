@@ -1,4 +1,5 @@
 import os
+import plotly.express as px
 import pandas as pd
 import numpy as np
 
@@ -17,3 +18,6 @@ faturamento_maximo = np.max(df_merge["payment_value"])
 print(f"Ticket máximo: R$ {faturamento_maximo:,.2f}")
 faturamento_minimo = np.min(df_merge["payment_value"])
 print(f"Ticket mínimo: R$ {faturamento_minimo:,.2f}")
+contador_valores = df_merge["payment_type"].value_counts()
+print(contador_valores)
+fig_pagamentos = px.pie(values=contador_valores.values, names=contador_valores.index, title="Formas de Pagamento")
