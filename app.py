@@ -54,7 +54,7 @@ dbc.Row([
     dbc.Row([
         dbc.Col(dcc.Graph(figure=fig_status), width=12),
     ]),
-], fluid=True)
+], fluid=True) 
 
 if __name__ == "__main__":
     app.run(debug=True)
