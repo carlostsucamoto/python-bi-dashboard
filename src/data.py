@@ -14,8 +14,4 @@ def carregar_dados():
     df_clientes = pd.read_csv(os.path.join(pasta_dados, "olist_customers_dataset.csv"), nrows=10000)
     df_merge = df_pedidos.merge(df_pagamentos, on="order_id")
 
-    print(pasta_raiz)
     return df_pedidos, df_itens, df_pagamentos, df_produtos, df_clientes, df_merge
-
-
-carregar_dados()

@@ -18,14 +18,17 @@ faturamento_medio = np.mean(df_merge["payment_value"])
 faturamento_maximo = np.max(df_merge["payment_value"])
 faturamento_minimo = np.min(df_merge["payment_value"])
 contador_valores = df_merge["payment_type"].value_counts()
-status = df_merge["order_status"].value_counts()
 
+status = df_merge["order_status"].value_counts()
 fig_status = px.bar(x=status.index, y=status.values, title="Status da compra", template="plotly_dark")
+
 fig_pagamentos = px.pie(values=contador_valores.values, names=contador_valores.index, title="Formas de Pagamento",template="plotly_dark")
 df_merge["order_purchase_timestamp"] = pd.to_datetime(df_merge["order_purchase_timestamp"])
 df_merge["mes"] = df_merge["order_purchase_timestamp"].dt.month
+
 faturamento_por_mes = df_merge.groupby("mes")["payment_value"].sum()
 fig_faturamento = px.bar(x = faturamento_por_mes.index, y = faturamento_por_mes.values, title = "Faturamento do mes",template="plotly_dark")
+
 app.layout = dbc.Container([
     html.H1("Dashboard de E-commerce Olist", className="text-center my-4"),
     
